@@ -10,6 +10,7 @@ class PageHome extends StatefulWidget {
 class _PageHomeState extends State<PageHome> {
   String? onSubmited;
   String? onChanged;
+  bool obscureText = true;
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +40,22 @@ class _PageHomeState extends State<PageHome> {
           Divider(),
           Text("onChanged = ${onChanged}"),
           Text("onSubmited = ${onSubmited}"),
+          Row(
+            children: [
+              Expanded(
+                  child: TextField(obscureText: obscureText,),
+              ),
+              IconButton(
+                  onPressed: (){
+                    setState(() {
+                      obscureText = !obscureText;
+                    });
+                  },
+                  icon: (obscureText == true) ? Icon(Icons.visibility_off) : Icon(Icons.visibility)
+              ),
+            ],
+          ),
+
         ],
       ),
     );
