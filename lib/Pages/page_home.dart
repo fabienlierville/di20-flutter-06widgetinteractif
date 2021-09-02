@@ -8,11 +8,19 @@ class PageHome extends StatefulWidget {
 }
 
 class _PageHomeState extends State<PageHome> {
+  //TextField
   String? onSubmited;
   String? onChanged;
   bool obscureText = true;
   TextEditingController textController = TextEditingController();
 
+  //Checkbox
+  Map <String, bool> listeCourse = {
+    "Carottes" : false,
+    "Bananes" : false,
+    "Yaourt" : false,
+    "Pain" : false,
+  };
 
 
   @override
@@ -79,6 +87,30 @@ class _PageHomeState extends State<PageHome> {
     setState(() {
       onChanged = textController.text;
     });
+  }
+
+  List<Widget> afficheListeCourse(){
+    List<Widget> l = [];
+
+    listeCourse.forEach((String ingredient, bool possede) {
+      Row row = Row(
+        children: [
+          Text(ingredient),
+          Checkbox(
+              value: possede,
+              onChanged: (bool? b){
+                setState(() {
+                  listeCourse[ingredient] = b!;
+                });
+              }
+          )
+        ],
+      );
+
+      l.add(row);
+    });
+
+    return l;
   }
 
 }
