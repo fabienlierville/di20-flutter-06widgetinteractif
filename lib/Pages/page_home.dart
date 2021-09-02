@@ -99,7 +99,9 @@ class _PageHomeState extends State<PageHome> {
     listeCourse.forEach((String ingredient, bool possede) {
       Row row = Row(
         children: [
-          Text(ingredient),
+          Text(ingredient,
+          style: TextStyle(decoration: (possede) ? TextDecoration.lineThrough : null),
+          ),
           Checkbox(
               value: possede,
               onChanged: (bool? b){
