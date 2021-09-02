@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:widgetsinteractifs/Utils/global_vars.dart';
 
 class PageHome extends StatefulWidget {
   const PageHome({Key? key}) : super(key: key);
@@ -24,6 +26,10 @@ class _PageHomeState extends State<PageHome> {
 
   //RadioBox
   Transport choixRadio = Transport.Avion;
+
+  //Switch
+  bool jour = false;
+
 
   @override
   void initState() {
@@ -129,7 +135,29 @@ class _PageHomeState extends State<PageHome> {
                   Text("Bateau", textScaleFactor: (choixRadio == Transport.Bateau) ? 1.5 : 1,),
                 ],
               ),
-
+            ],
+          ),
+          Row(
+            children: [
+              Switch(
+                  value: jour,
+                  onChanged: (bool b){
+                    setState(() {
+                      jour = b;
+                    });
+                  },
+                inactiveTrackColor: Colors.red,
+                activeColor: Colors.green,
+              ),
+              Text((jour)?"Jour":"Nuit"),
+              CupertinoSwitch(
+                value: jour,
+                onChanged: (bool b){
+                  setState(() {
+                    jour = b;
+                  });
+                },
+              ),
             ],
           )
         ],
@@ -138,6 +166,7 @@ class _PageHomeState extends State<PageHome> {
   }
 
   void afficherValeurChamp(){
+    Global.prenom = textController.text;
     setState(() {
       onChanged = textController.text;
     });
@@ -173,8 +202,3 @@ class _PageHomeState extends State<PageHome> {
 }
 
 
-enum Transport {
-  Voiture,
-  Avion,
-  Bateau,
-}
