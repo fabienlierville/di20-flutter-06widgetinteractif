@@ -33,6 +33,9 @@ class _PageHomeState extends State<PageHome> {
   //Slider
   double kilometres = 0;
 
+  //DateTime
+  DateTime? date;
+
   @override
   void initState() {
     textController.addListener(afficherValeurChamp);
@@ -216,6 +219,23 @@ class _PageHomeState extends State<PageHome> {
     });
 
     return l;
+  }
+
+  Future<void> choixDate() async{
+   DateTime? _dateChoisie =  await showDatePicker(
+        context: context,
+        initialDate: DateTime.now(),
+        firstDate: DateTime(1983),
+        lastDate: DateTime(2035)
+    );
+
+   if(_dateChoisie != null){
+     setState(() {
+       date = _dateChoisie;
+     });
+   }
+
+
   }
 
 }
