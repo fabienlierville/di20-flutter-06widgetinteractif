@@ -230,7 +230,7 @@ class _PageHomeState extends State<PageHome> {
         context: context,
         initialDate: DateTime.now(),
         firstDate: DateTime(1983),
-        lastDate: DateTime(2035)
+        lastDate: DateTime(2035),
     );
 
    if(_dateChoisie != null){
