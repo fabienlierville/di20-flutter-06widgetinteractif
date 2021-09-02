@@ -22,6 +22,8 @@ class _PageHomeState extends State<PageHome> {
     "Pain" : false,
   };
 
+  //RadioBox
+  Transport choixRadio = Transport.Avion;
 
   @override
   void initState() {
@@ -81,6 +83,54 @@ class _PageHomeState extends State<PageHome> {
             child: Column(
               children: afficheListeCourse(),
             ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Column(
+                children: [
+                  Radio(
+                    value: Transport.Voiture,
+                    onChanged: (Transport? value){
+                      setState(() {
+                        choixRadio = value!;
+                      });
+                    },
+                    groupValue: choixRadio,
+                  ),
+                  Text("Voiture"),
+                ],
+              ),
+              Column(
+                children: [
+                  Radio(
+                    value: Transport.Avion,
+                    onChanged: (Transport? value){
+                      setState(() {
+                        choixRadio = value!;
+                      });
+                    },
+                    groupValue: choixRadio,
+                  ),
+                  Text("Avion"),
+                ],
+              ),
+              Column(
+                children: [
+                  Radio(
+                    value: Transport.Bateau,
+                    onChanged: (Transport? value){
+                      setState(() {
+                        choixRadio = value!;
+                      });
+                    },
+                    groupValue: choixRadio,
+                  ),
+                  Text("Bateau"),
+                ],
+              ),
+
+            ],
           )
         ],
       ),
@@ -120,4 +170,11 @@ class _PageHomeState extends State<PageHome> {
     return l;
   }
 
+}
+
+
+enum Transport {
+  Voiture,
+  Avion,
+  Bateau,
 }
