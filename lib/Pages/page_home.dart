@@ -98,7 +98,7 @@ class _PageHomeState extends State<PageHome> {
                     },
                     groupValue: choixRadio,
                   ),
-                  Text("Voiture"),
+                  Text("Voiture", textScaleFactor: (choixRadio == Transport.Voiture) ? 1.5 : 1,),
                 ],
               ),
               Column(
@@ -112,7 +112,7 @@ class _PageHomeState extends State<PageHome> {
                     },
                     groupValue: choixRadio,
                   ),
-                  Text("Avion"),
+                  Text("Avion", textScaleFactor: (choixRadio == Transport.Avion) ? 1.5 : 1,),
                 ],
               ),
               Column(
@@ -126,7 +126,7 @@ class _PageHomeState extends State<PageHome> {
                     },
                     groupValue: choixRadio,
                   ),
-                  Text("Bateau"),
+                  Text("Bateau", textScaleFactor: (choixRadio == Transport.Bateau) ? 1.5 : 1,),
                 ],
               ),
 
