@@ -11,6 +11,16 @@ class _PageHomeState extends State<PageHome> {
   String? onSubmited;
   String? onChanged;
   bool obscureText = true;
+  TextEditingController textController = TextEditingController();
+
+
+
+  @override
+  void initState() {
+    textController.addListener(afficherValeurChamp);
+    super.initState();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +46,7 @@ class _PageHomeState extends State<PageHome> {
                 onSubmited = value;
               });
             },
+            textInputAction: TextInputAction.next,
           ),
           Divider(),
           Text("onChanged = ${onChanged}"),
@@ -55,9 +66,19 @@ class _PageHomeState extends State<PageHome> {
               ),
             ],
           ),
+          TextField(
+            controller: textController,
+          ),
 
         ],
       ),
     );
   }
+
+  void afficherValeurChamp(){
+    setState(() {
+      onChanged = textController.text;
+    });
+  }
+
 }
