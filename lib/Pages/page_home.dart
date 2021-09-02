@@ -30,6 +30,8 @@ class _PageHomeState extends State<PageHome> {
   //Switch
   bool jour = false;
 
+  //Slider
+  double kilometres = 0;
 
   @override
   void initState() {
@@ -143,6 +145,7 @@ class _PageHomeState extends State<PageHome> {
                   value: jour,
                   onChanged: (bool b){
                     setState(() {
+                      kilometres +=10;
                       jour = b;
                     });
                   },
@@ -159,7 +162,23 @@ class _PageHomeState extends State<PageHome> {
                 },
               ),
             ],
-          )
+          ),
+          Slider(
+              value: kilometres,
+              onChanged: (double value){
+                setState(() {
+                  kilometres = value;
+                });
+              },
+            min: 0,
+            max: 150,
+            divisions: 15,
+            inactiveColor: Colors.black87,
+            activeColor: Colors.pink,
+            label: "${kilometres}",
+
+          ),
+          Text("Slider = ${kilometres}")
         ],
       ),
     );
