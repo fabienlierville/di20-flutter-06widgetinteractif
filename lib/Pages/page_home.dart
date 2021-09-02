@@ -77,7 +77,11 @@ class _PageHomeState extends State<PageHome> {
           TextField(
             controller: textController,
           ),
-
+          Container(
+            child: Column(
+              children: afficheListeCourse(),
+            ),
+          )
         ],
       ),
     );
@@ -101,6 +105,7 @@ class _PageHomeState extends State<PageHome> {
               onChanged: (bool? b){
                 setState(() {
                   listeCourse[ingredient] = b!;
+                  print(listeCourse);
                 });
               }
           )
