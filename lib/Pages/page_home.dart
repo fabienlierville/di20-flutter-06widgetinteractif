@@ -8,11 +8,38 @@ class PageHome extends StatefulWidget {
 }
 
 class _PageHomeState extends State<PageHome> {
+  String? onSubmited;
+  String? onChanged;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Widgets Interactifs"),
+      ),
+      body: Column(
+        children: [
+          TextField(
+            keyboardType:TextInputType.emailAddress,
+            decoration: InputDecoration(
+              labelText: "Entrez votre mail",
+              hintText: "test@test.com"
+            ),
+            onChanged: (String value){
+              setState(() {
+                onChanged = value;
+              });
+            },
+            onSubmitted: (String value){
+              setState(() {
+                onSubmited = value;
+              });
+            },
+          ),
+          Divider(),
+          Text("onChanged = ${onChanged}"),
+          Text("onSubmited = ${onSubmited}"),
+        ],
       ),
     );
   }
