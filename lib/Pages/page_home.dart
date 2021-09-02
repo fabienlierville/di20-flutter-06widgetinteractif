@@ -181,7 +181,11 @@ class _PageHomeState extends State<PageHome> {
             label: "${kilometres}",
 
           ),
-          Text("Slider = ${kilometres}")
+          Text("Slider = ${kilometres}"),
+          ElevatedButton(
+              onPressed: choixDate,
+              child: Text((date==null)?"Aucune date": "${date!.day}/${date!.month}/${date!.year}")
+          ),
         ],
       ),
     );
