@@ -234,11 +234,22 @@ class _PageHomeState extends State<PageHome> {
     );
 
    if(_dateChoisie != null){
+     await choixHeure;
      setState(() {
        date = _dateChoisie;
      });
    }
 
+
+  }
+
+  Future<void> choixHeure() async{
+   TimeOfDay? timeOfDay = await showTimePicker(
+       context: context,
+       initialTime: TimeOfDay.now()
+   );
+
+   print(timeOfDay);
 
   }
 
